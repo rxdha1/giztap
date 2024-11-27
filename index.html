@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Main -->
+    <title id="page_title">Puppy </title>
+    <link rel="shortcut icon" type="image/png" href="./assets/stats/puppy.png"/>
+    <meta name="theme-color" content="#312e2e" id="theme_color">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="puppy_clicker.css">
+    <link rel="stylesheet" type="text/css" href="themes.css">
+
+    <!-- Social metadata (link preview) -->
+    <!-- https://stackoverflow.com/a/54266944/11039898 -->
+    <meta property="og:title" content="puppy" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://game.nasirsynergy.com.ng/" />
+    <meta property="og:image" content="https://game.nasirsynergy.com/assets/puppy%20Clicker.png" />
+
+    <!-- Description -->
+    <meta name="description" content="Puppy tap game is an exponential growth clicker game where clicking is always incentivised">
+    <meta property="og:description" content="Puppy tap game is an exponential growth clicker game where clicking is always incentivised" />
+
+    <!-- Javascript -->
+    <script src="puppy_utilities.js" defer></script>
+    <script src="gamedata.js" defer></script>
+    <script src="puppy_clicker.js" defer></script>
+    <script src="styling.js" defer></script>
+    <script src="user.js" defer></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NTHCZFXKB8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NTHCZFXKB8');
+</script>
+    
+    <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
+    
+</head>
+<body>
+    <!-- Toast notifications -->
+    <div id="toast_container">
+        <div id="toasts_clear" onclick="clearToasts()">Close All</div>
+    </div>
+
+    <!-- Main page -->
+    <main id="main">
+        <!-- Status bar -->
+        <div class="status_bar">
+            <!-- Display when Javascript is turned off -->
+            <noscript class="center">
+                <style>noscript > div { width: 100%; padding: 16px 0; background-color: var(--warning-red); }</style>
+                <div class="center">
+                    <b><u>Notice:</u></b> Javascript is required to play Puppy Clicker.<br/>
+                    You'll need to enable Javascript for this site in your browser's settings
+                </div>
+            </noscript>
+<p id="wallet-address">connect</p>
+            <!-- Status bar -->
+            <div class="basic_info flex">
+                
+                <h1 style="font-size: 16px; margin: 0; padding-left: 2px;">
+                    <img src="./assets/pixel_puppy_32x.png" alt="" id="main_icon" title="Puppy tap Game">
+                    Puppy Tap
+                </h1>
+                <!-- Tips -->
+                <div id="Tip" class="link_styling" onclick="tipchange()" tabindex="0" role="button">Tip: Click the Puppy</div>
+
+                <div id="info_dropdown" tabindex="0">
+                    ▼
+                    <nav class="hover_menu">
+                        <!-- Settings -->
+                        <a href="#settings" onclick="panelChange(`settings-panel`)" tabindex="0">
+                            <div class="menu_item link_styling secondary_text">
+                                <img src="./assets/icons/settings.svg" alt="" class="dropdown_img invert">
+                                Settings
+                            </div>
+                        </a>
+
+                        <!-- Theme/cosmetic -->
+                        <div class="flex">
+                            <a onclick="themeSwitcher()" tabindex="0">
+                                <div class="menu_item link_styling secondary_text" style="border-right: 1px solid var(--border-color);">
+                                    <img src="./assets/icons/palette.svg" alt="" class="dropdown_img invert">
+                                    Themes
+                                </div>
+                            </a>
+        
+                            <a onclick="cosmeticSwitcher()" tabindex="0">
+                                <div class="menu_item link_styling secondary_text cosmetic_related">
+                                    <img src="./assets/icons/padlock.svg" alt="" class="dropdown_img invert cosmetic_padlock">
+                                    <img src="./assets/icons/cosmetic.svg" alt="" class="dropdown_img invert">
+                                    Cosmetics
+                                </div>
+                            </a>
+        
+                        </div>
+
+                        <!-- Volume -->
+                        <div class="menu_item link_styling secondary_text">
+                            <label for="volume_master_dropdown">
+                                <img src="./assets/icons/volume.svg" alt="" class="dropdown_img invert" id="volume_master_dropdown_img">
+                                <input type="range" min="0" max="100" value="100" class="slider" id="volume_master_dropdown">
+                            </label>
+                        </div>
+
+                        <!-- View credits -->
+                        <a tabindex="0" onclick="startCredits()">
+                            <div class="menu_item link_styling secondary_text">
+                                <img src="./assets/blank.png" alt="" class="dropdown_img">
+                                Credits
+                            </div>
+                        </a>
+                        
+
+                        <!-- Privacy Policy -->
+                        <a href="https://www.google.com/about/#privacy" target="_blank" rel="noopener noreferrer" tabindex="0">
+                            <div class="menu_item link_styling secondary_text">
+                                <!-- <img src="https://www.google.com/assets/icon.png" alt="" class="dropdown_img"> -->
+                                Privacy Policy
+                                <img src="./assets/icons/external.svg" alt="(External)" class="dropdown_img right_img">
+                            </div>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Progress bar -->
+            <div id="main_progress_container" class="status_progress_bar">
+                <!-- Image -->
+                <img src="./assets/tools/tool_0.png" alt="" id="main_progress_image" class="main_progress_image">
+                <div id="main_progress" class="pbar status_progress">
+                    <!-- Progress -->
+                    <div id="main_progress_bar" class="progress"></div>
+                </div>
+            </div>
+
+        </div>
+        
+        <!-- $Paw / Characters -->
+        <div id="container" class="flex">
+            <!-- Left Section -->
+            <div id="home" class="anchor_offset"></div>
+            <section id="game_section">
+
+                <!-- Falling $Paw -->
+                <div id="fallingpuppysArea"></div>
+
+                <!-- $Paw image-->
+                <img src="https://i.postimg.cc/90DHWgLN/logo2.png" id="main_puppy" alt="$Paw" role="button" tabindex="0" draggable="false">
+
+                <!-- Lower game section -->
+                <div class="home_lower">
+                    <!-- Game panel for massag-->
+                   <!-- <div class="game_panel">
+                        <div class="toast_close" role="button" tabindex="0">X</div>
+                        <p>Game massgae panel</p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora iste quae animi fuga. Sunt quos amet deserunt itaque hic modi?
+                    </div>-->
+                    
+                    
+                    <!-- telegram and mysql setup code -->
+  <script>
+        // Initialize Telegram Web App
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+
+        // Get user info
+        const user = tg.initDataUnsafe?.user;
+        const userId = user?.id;
+        const username = user?.username;
+
+        // Store and retrieve user data from the server
+        function fetchUserData() {
+            if (userId) {
+                fetch('get_user_data.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ userId: userId })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('lifetime_puppys').textContent = data.balance;
+                    const tasks = data.daily_tasks;
+                    const tasksContainer = document.getElementById('daily_tasks');
+                    tasksContainer.innerHTML = ''; // Clear previous tasks
+                    tasks.forEach(task => {
+                        const taskElement = document.createElement('div');
+                        taskElement.textContent = task;
+                        tasksContainer.appendChild(taskElement);
+                    });
+                    // Set reward balance
+                    localStorage.setItem('rewardBalance', data.balance);
+                    updateRewardBalance();
+                    checkTasksCompletion();
+                })
+                .catch(error => console.error('Error fetching user data:', error));
+            } else {
+                document.getElementById('lifetime_puppys').textContent = 'Unable to fetch user data';
+            }
+        }
+
+        // Call fetchUserData to initialize user data on load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize local storage if not set
+            if (!localStorage.getItem('rewardBalance')) {
+                localStorage.setItem('rewardBalance', '0');
+            }
+            if (!localStorage.getItem('lastClaimDate')) {
+                localStorage.setItem('lastClaimDate', '');
+            }
+            if (!localStorage.getItem('completedTasks')) {
+                localStorage.setItem('completedTasks', JSON.stringify({}));
+            }
+            fetchUserData(); // Fetch user data from the server
+        });
+
+        // Function to start a task
+        function startTask(taskId, taskUrl) {
+            let completedTasks = JSON.parse(localStorage.getItem('completedTasks'));
+            let today = new Date().toISOString().split('T')[0];
+
+            if (completedTasks[taskId] === today) {
+                alert('You have already completed this task today.');
+                return;
+            }
+
+            let taskButton = document.querySelector(`#${taskId} button`);
+            taskButton.disabled = true;
+            taskButton.textContent = 'Checking...';
+
+            window.open(taskUrl, '_blank');
+
+            setTimeout(() => {
+                taskButton.textContent = 'Complete';
+                taskButton.classList.add('claim');
+                taskButton.disabled = false;
+                taskButton.onclick = () => markTaskComplete(taskId);
+            }, 10000);
+        }
+
+        // Function to mark a task as complete
+        function markTaskComplete(taskId) {
+            let today = new Date().toISOString().split('T')[0];
+            let completedTasks = JSON.parse(localStorage.getItem('completedTasks'));
+
+            completedTasks[taskId] = today;
+            localStorage.setItem('completedTasks', JSON.stringify(completedTasks));
+
+            let taskButton = document.querySelector(`#${taskId} button`);
+            taskButton.disabled = true;
+            taskButton.textContent = 'Completed';
+
+            checkTasksCompletion();
+        }
+
+        // Function to check if all tasks are completed
+        function checkTasksCompletion() {
+            let today = new Date().toISOString().split('T')[0];
+            let completedTasks = JSON.parse(localStorage.getItem('completedTasks'));
+
+            let allTasksCompleted = true;
+            let taskIds = ['task-yt-sub', 'task-yt-watch', 'task-twitter', 'task-tiktok'];
+
+            taskIds.forEach(taskId => {
+                if (completedTasks[taskId] !== today) {
+                    allTasksCompleted = false;
+                }
+            });
+
+            document.getElementById('claim-reward').disabled = !allTasksCompleted;
+        }
+
+        // Function to claim the reward
+        function claimReward() {
+            let today = new Date().toISOString().split('T')[0];
+            let lastClaimDate = localStorage.getItem('lastClaimDate');
+
+            if (lastClaimDate === today) {
+                alert('You can only claim the reward once a day.');
+                return;
+            }
+
+            let rewardBalance = parseInt(localStorage.getItem('rewardBalance'));
+            rewardBalance += 2000; // Assuming 2000 points per day
+            localStorage.setItem('rewardBalance', rewardBalance.toString());
+            localStorage.setItem('lastClaimDate', today);
+
+            updateRewardBalance();
+
+            // Update the balance on the server
+            updateBalanceOnServer(rewardBalance);
+        }
+
+        // Function to update the reward balance display
+        function updateRewardBalance() {
+            document.getElementById('reward-balance').textContent = localStorage.getItem('rewardBalance');
+        }
+
+        // Function to update the balance on the server
+        function updateBalanceOnServer(newBalance) {
+            if (userId) {
+                fetch('get_user_data.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ userId: userId, newBalance: newBalance })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Balance updated:', data.balance);
+                    document.getElementById('lifetime_puppys').textContent = data.balance; // Update UI with new balance
+                })
+                .catch(error => console.error('Error updating user balance:', error));
+            } else {
+                console.error('User ID not found');
+            }
+        }
+    </script>
+                  
+
+                    <!-- Numbers/Info Section -->
+                    <div class="mini_stats">
+                        <p class="puppy_Count">
+                            <img src="./assets/pawtoken.png" width="28" height="28"/>
+                            <span id="puppy_Count">0</span> 
+                            <span class="farmable_name"></span>
+                        </p>                        
+                       <p><span id="click_speed">0/0 clicks per second</span></p><br>
+                        <div class="row flex">
+                            <!-- CPC -->
+                            <div class="mini_item" id="list_cpc" data-tooltip="$Paw Per Click">
+                                <img src="./assets/stats/cursor_white.png" alt="" class="invert_alt"><span class="mini_name">CPC</span><span id="cpc" class="mini_number">...</span>
+                            </div>
+                            <!-- CPS -->
+                            <div class="mini_item" id="list_cps" data-tooltip="$Paw Per Second">
+                                <img src="./assets/stats/clock.png" alt="" class="invert_alt"><span class="mini_name">Profit</span><span id="cps" class="mini_number">...</span>
+                            </div>
+                        </div><br/>
+
+                        <div class="row flex">
+                            <!-- Golden $Paw -->
+                            <div class="mini_item" id="list_golden_puppys" data-tooltip="Golden $Paw are created when you prestige. Use them to buy tomes to give your farmers permanent buffs. Be sure to spend all of your golden $Paw before you start farming!">
+                                <span class="mini_name">Golden $Paw</span><span id="golden_puppy_count" class="mini_number">0</span>
+                            </div>
+                            <!-- Tome Pages -->
+                            <div class="mini_item" id="list_pages" data-tooltip="For every tome page you have you will recieve a +1% (or more) golden $Paw bonus when prestiging. Earn additional tome pages by completing achievements!">
+                                <span class="mini_name">Keys</span><span id="page_count" class="mini_number">...</span>
+                            </div>
+                        </div>
+
+                        <div class="row flex">
+                            <!-- Coins -->
+                            <div class="mini_item" id="list_cash" data-tooltip="While clicking the $Paw there is a chance that coins will drop instead of $Paw. Make sure to grab them!">
+                                <span class="mini_name">Beta</span><span class="mini_number"><span class="color_cash">⚬</span> <span id="cash_count">...</span></span>
+                            </div>
+                            <!-- Stamps -->
+                            <div class="mini_item" id="list_stamps" data-tooltip="placeholder">
+                                <span class="mini_name">NFT:</span><span id="stamp_count" class="mini_number">...</span>
+                            </div> 
+                        </div>
+
+
+                    </div>
+                                                     <!--Task daily-->
+
+                    <div class="dialog">
+                        <div class="dialog-header">Daily Tasks</div>
+                        <div class="reward-balance">$Paw: <span id="reward-balance">0</span></div>
+                        <div class="task" id="task-yt-sub">
+                          <img src="./assets/youtube.png" alt="YouTube">
+                          <span>Subscribe Puppy tap</span>
+                          <button onclick="startTask('task-yt-sub', 'https://youtube.com/@puppytap?si=jyVvcZ4ZtzCc4weT')">Start</button>
+                        </div>
+                        <div class="task" id="task-yt-watch">
+                          <img src="./assets/youtube.png" alt="YouTube">
+                          <span>Puppy on Ton </span>
+                          <button onclick="startTask('task-yt-watch', 'https://youtu.be/iYYEvB_Pi6c?si=4SzH1F-hyUFLuahr')">Start</button>
+                        </div>
+                        <div class="task" id="task-twitter">
+                          <img src="./assets/twitter.png" alt="Twitter">
+                          <span>Twitter Follow</span>
+                          <button onclick="startTask('task-twitter', 'https://x.com/PuppyTap')">Start</button>
+                        </div>
+                        <div class="task" id="task-tiktok">
+                          <img src="./assets/tiktok.png" alt="TikTok">
+                          <span>TikTok Follow</span>
+                          <button onclick="startTask('task-tiktok', 'https://vm.tiktok.com/ZMrqerJcd/')">Start</button>
+                        </div>
+                        <button id="claim-reward" disabled onclick="claimReward()">Claimed 2000 $Paw</button>
+                      </div>
+
+
+
+
+                    <!-- Buttons -->
+                    <div class="main_buttons flex">
+                        <!-- Prestige button -->
+                        <button onClick="openPrestigeMenu()" class="main_button_item" id="prestige_menu_button" data-tooltip="???" disabled>
+                            <img src="./assets/icons/question_mark.svg" alt="Prestige" class="main_button_img" id="prestige_menu_button_img">
+                        </button>
+                        
+                        
+                        
+                        
+                        <!-- Inventory button -->
+                        <button onClick="openInventory()" data-tooltip="Inventory" class="main_button_item" id="inventory_button">
+                            <img src="./assets/icons/backpack.svg" alt="Inventory" class="main_button_img" id="inventory_button_img">
+                        </button>
+                        <!-- Tips button -->
+                        <button onClick="openTipsMenu()" data-tooltip="Tips" class="main_button_item" id="tips_menu_button">
+                            <img src="./assets/icons/lightbulb.svg" alt="Tips" class="main_button_img" id="tips_button_img">
+                        </button>
+                        
+                        <!-- Hardmode button -->
+                        <button onClick="openDifficultyMenu()" data-tooltip="Hardmode" class="main_button_item button_red hidden position_absolute" id="difficulty_menu_button">
+                            <img src="./assets/icons/medal.png" alt="Hardmode" class="main_button_img" id="tips_button_img">
+                        </button>
+                        <!-- Share -->
+                        <script>
+                            function shareProgress() {
+                                navigator.share({
+                                    text:`I\'ve farmed ${player.puppys} Puppy Clicker so far. Check it out!\n\nhttps://t.me/share/url?url=t.me/Puptopia_bot?start=ar1231769742`,
+                                    url:'https://t.me/share/url?url=t.me/Puptopia_bot?start=<ar1231769742>  </ar1231769742>'
+                                }).catch(err => {toast('didnt work rip')});
+                            }
+                        </script>
+                        <button onClick="shareProgress()" data-tooltip="Share your progress" class="main_button_item flex" style="width: auto; padding: 5px 9px;">
+                            <img src="./assets/icons/share.png" class="main_button_img icon">
+                            <span style="margin: 7px 0 0 6px;">Share</span>
+                        </button>
+                    </div>
+
+                    <!-- Prestige potential -->
+                    <p id="prestige-section" class="secondary_text center" style="padding-top: 6px;">
+                        Prestige potential: <span id="main_prestige_potential">-</span>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Right Section -->
+            <div id="characters" class="anchor_offset"></div>
+            <section id="character_section">
+                
+                <!-- Column 1 -->
+                <div class="character_column">
+
+                    <!-- Powers -->
+                    <div id="powers_container" class="box flex">
+                        <div class="mb_vr">
+                            <div id="multibuy" class="power_item link_styling bold secondary_text" title="Purchase multiplier - Click to cycle" onclick="multibuySpin()" tabindex="0" role="button">
+                                1x
+                            </div>
+                        </div>
+
+                        <!-- Active boosts -->
+                        <div id="boosts" class="flex">
+                            <!-- <div class="power_item" id="boost_0">
+                                <img src="./assets/pixel_puppy_32x.png" alt=""><span id="time_boost_0">-:--</span>
+                            </div> -->
+                        </div>
+
+                        <!-- None active -->
+                        <div id="no_powers" class="power_item" style="width: 100%; background: none; box-shadow: none; padding-left: 0">
+                            No active boosts
+                        </div>
+
+                        <!-- Info button -->
+                        <span tabindex="0" class="question_mark" title="Boosts will not be remembered if the game is closed" onclick="toast(...toasts.info_boosts)" style="padding-right: 10px; margin-left: auto;">?</span>
+                    </div>
+
+                    <!--Boomer Bill Rendering-->
+                    <!-- #region -->
+                    <div class="Bill characterbox box" id="bill_box">
+                        <div class="char_info" id="bill_info">
+                            <h2>Booster</h2>
+                            <p class="secondary_text">1</p>
+                            <hr>
+                            <p>Upgrading Booster will increase your $Paw per click</p>
+                            
+                        </div>
+                        <img src="./assets/icons/palette.svg" alt="Customize" title="Cosmetics" class="button_icon char_mini_button char_custom_button" onclick="cosmeticSwitcher('bill')" tabindex="0" role="button">
+                        <img src="./assets/icons/info.svg" alt="Info" title="Info" class="button_icon char_mini_button char_info_button" onclick="characterInfo('bill')" tabindex="0" role="button">
+
+                        <!-- Top -->
+                        <div class="top flex">
+                            <img
+                                src="https://i.postimg.cc/QtGLJ0Qr/booster.png" width="25" height="25"
+                                alt="Boomer Bill"
+                                id="bill_avatar"
+                                class="characterimg"
+                                title="Boom Booster"
+                                onclick="characterInfo('bill')">
+
+                            <div class="characterdesc">
+                                <b id="bill_name" class="character_name">Booster</b>
+                                <p>Upgrade cost: <span id="UpBillCost" class="upgrade_cost white">-</span></p>
+                                <p>Level: <input type="text" value="-" id="Bill_lvl" class="discreet dev_input" autocomplete="off" disabled></p>
+                            </div>
+                        </div>
+
+                        <!-- Bottom -->
+                        <div class="bottom">
+
+                            <img src="./assets/icons/lvl_up_arrow.png" id="bill_level_up" class="levelupimg" alt="Upgrade Boomer Bill" onclick="levelUp(Boomer_Bill,multibuy[mbsel])" title="Level up" tabindex="0" role="button">
+                            
+                            <p class="toolnumber" id="bill_tool_0_number">err</p>
+                            <img src="./assets/tools/tool_0.png" onclick="equipTool(Boomer_Bill,0,multibuy[mbsel])" class="toolicon blackedout tool_0" id="bill_tool_0" tabindex="0" role="button">
+
+                            <p class="toolnumber" id="bill_tool_1_number">err</p>
+                            <img src="./assets/tools/tool_1.png" onclick="equipTool(Boomer_Bill,1,multibuy[mbsel])" class="toolicon blackedout tool_1" id="bill_tool_1" tabindex="0" role="button">
+
+                            <p class="toolnumber" id="bill_tool_2_number">err</p>
+                            <img src="./assets/tools/tool_2.png" onclick="equipTool(Boomer_Bill,2,multibuy[mbsel])" class="toolicon blackedout tool_2" id="bill_tool_2" tabindex="0" role="button">
+
+                            <p class="toolnumber" id="bill_tool_3_number">err</p>
+                            <img src="./assets/tools/tool_3.png" onclick="equipTool(Boomer_Bill,3,multibuy[mbsel])" class="toolicon blackedout tool_3" id="bill_tool_3" tabindex="0" role="button">
+
+                            <p class="toolnumber" id="bill_tool_4_number">err</p>
+                            <img src="./assets/tools/tool_4.png" onclick="equipTool(Boomer_Bill,4,multibuy[mbsel])" class="toolicon blackedout tool_4" id="bill_tool_4" tabindex="0" role="button">
+
+                            <p class="toolnumber" id="bill_tool_5_number">err</p>
+                            <img src="./assets/tools/tool_5.png" onclick="equipTool(Boomer_Bill,5,multibuy[mbsel])" class="toolicon blackedout tool_5" id="bill_tool_5" tabindex="0" role="button">
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+
+                    <!--Belle Boomerette Rendering-->
+                    <!-- #region -->
+                    <div class="Belle characterbox box char_locked" id="belle_box">
+                        <div  class="char_info" id="belle_info">
+                            <h2>Belle</h2>
+                            <p class="secondary_text">- keeper-</p>
+                            <hr>
+                            Upgrading Belle will increase your $Paw per second 1.
+                        </div>
+                        <img src="./assets/icons/palette.svg" alt="Customize" title="Cosmetics" class="button_icon char_mini_button char_custom_button" onclick="cosmeticSwitcher('belle')" tabindex="0" role="button">
+                        <img src="./assets/icons/info.svg" alt="Info" title="Info" class="button_icon char_mini_button char_info_button" onclick="characterInfo('belle')" tabindex="0" role="button">
+
+                        <!-- Top -->
+                        <div class="top flex">
+                            <img
+                            src="https://i.postimg.cc/QtGLJ0Qr/booster.png"
+                            alt="Belle Boomerette"
+                            id="belle_avatar"
+                            class="characterimg"
+                            title="Boomer Belle"
+                            onclick="characterInfo('belle')">
+
+                            <div class="characterdesc">
+                                <b id="belle_name" class="character_name">Belle</b>
+                                <p>Upgrade cost: <span id="UpBelleCost" class="upgrade_cost white">-</span></p>
+                                <p>Level: <input type="text" value="-" id="Belle_lvl" class="discreet dev_input" autocomplete="off" disabled></p>
+                            </div>
+                        </div>
+
+                        <!-- Bottom -->
+                        <div class="bottom">
+
+                            <img src="./assets/icons/lvl_up_arrow.png" id="belle_level_up" alt="Upgrade Belle Boomerette" onclick="levelUp(Belle_Boomerette,multibuy[mbsel])" class="levelupimg" title="Level up" tabindex="0" role="button">
+
+                            <p class="toolnumber" id="belle_tool_0_number">err</p>
+                            <img src="./assets/tools/tool_0.png" onclick="equipTool(Belle_Boomerette,0,multibuy[mbsel])" class="toolicon blackedout tool_0" id="belle_tool_0" tabindex="0" role="button">
+
+                            <p class="toolnumber" id="belle_tool_1_number">err</p>
+                            <img src="./assets/tools/tool_1.png" onclick="equipTool(Belle_Boomerette,1,multibuy[mbsel])" class="toolicon blackedout tool_1" id="belle_tool_1" tabindex="0" role="button">
+
+                            <p class="toolnumber" id="belle_tool_2_number">err</p>
+                            <img src="./assets/tools/tool_2.png" onclick="equipTool(Belle_Boomerette,2,multibuy[mbsel])" class="toolicon blackedout tool_2" id="belle_tool_2" tabindex="0" role="button">
+
+                            <p class="toolnumber" id="belle_tool_3_number">err</p>
+                            <img src="./assets/tools/tool_3.png" onclick="equipTool(Belle_Boomerette,3,multibuy[mbsel])" class="toolicon blackedout tool_3" id="belle_tool_3" tabindex="0" role="button">
+
+                            <p class="toolnumber" id="belle_tool_4_number">err</p>
+                            <img src="./assets/tools/tool_4.png" onclick="equipTool(Belle_Boomerette,4,multibuy[mbsel])" class="toolicon blackedout tool_4" id="belle_tool_4" tabindex="0" role="button">
+
+                            <p class="toolnumber" id="belle_tool_5_number">err</p>
+                            <img src="./assets/tools/tool_5.png" onclick="equipTool(Belle_Boomerette,5,multibuy[mbsel])" class="toolicon blackedout tool_5" id="belle_tool_5" tabindex="0" role="button">
+                        </div>
+
+                    </div>
+                    <!-- #endregion -->
+                    
+                    <!--Gregory Rendering-->
+                    <div class="Greg characterbox box char_locked" id="greg_box">
+                        <div class="char_info" id="greg_info">
+                            <h2>Greg</h2>
+                            <p class="secondary_text">- Blacksmith -</p><hr>
+                            Upgrade Greg to create and store tools. The maximum amount of tools he and the other characters can hold is equal to his level.
+                        </div>
+                        <img src="./assets/icons/palette.svg" alt="Customize" title="Cosmetics" class="button_icon char_mini_button char_custom_button" onclick="cosmeticSwitcher('greg')" tabindex="0" role="button">
+                        <img src="./assets/icons/info.svg" alt="Info" title="Info" class="button_icon char_mini_button char_info_button" onclick="characterInfo('greg')" tabindex="0" role="button">
+
+                        <!-- Top -->
+                        <div class="top flex">
+                            <img
+                            src="./assets/characters/Greg.png"
+                            alt="Gregory"
+                            id="greg_avatar"
+                            class="characterimg"
+                            title="Gregory"
+                            onclick="characterInfo('greg')">
+                            <div class="characterdesc">
+                                <b id="greg_name" class="character_name">Greg</b>
+                                <p>Upgrade cost: <span id="UpGregCost" class="upgrade_cost white">-</span></p>
+                                <p>Level: <input type="text" value="-" id="Greg_lvl" class="discreet dev_input" autocomplete="off" disabled><span id="greg_next">Next tool at -</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Bottom -->
+                        <div class="bottom secondary_text">
+                            <img src="./assets/icons/lvl_up_arrow.png" id="greg_level_up" alt="Upgrade Greg" onclick="levelUp(Gregory,multibuy[mbsel])" class="levelupimg" title="Level up" tabindex="0" role="button">
+
+                            <!-- Crafting display -->
+                            <div class="darker_bg_color inactive" title="Idle" id="greg_crafting_info">
+                                <img src="./assets/tools/tool_0.png" alt="" id="greg_progress_image" class="main_progress_image">
+                                <img src="./assets/icons/refresh.svg" alt="" class="greg_spinny">
+                            </div>
+
+                            <!-- Tools -->
+                            <span class="tool blackedout" data-tooltip="Hoe" id="greg_tool_0">
+                                <span class="tool_price" data-tool-id="0">tool_0</span>
+                                <p class="toolnumber" id="greg_tool_0_number">err</p>
+                                <img src="./assets/tools/tool_0.png" class="toolicon greg_margin_fix tool_0" onclick="createTool(0,multibuy[mbsel])" tabindex="0" role="button">
+                            </span>
+                            <span class="tool blackedout" data-tooltip="Sturdy Hoe" id="greg_tool_1">
+                                <span class="tool_price" data-tool-id="1">tool_1</span>
+                                <p class="toolnumber" id="greg_tool_1_number">err</p>
+                                <img src="./assets/tools/tool_1.png" class="toolicon tool_1" onclick="createTool(1,multibuy[mbsel])" tabindex="0" role="button">
+                            </span>
+                            <span class="tool blackedout" data-tooltip="Scythe" id="greg_tool_2">
+                                <span class="tool_price" data-tool-id="2">tool_2</span>
+                                <p class="toolnumber" id="greg_tool_2_number">err</p>
+                                <img src="./assets/tools/tool_2.png" class="toolicon tool_2" onclick="createTool(2,multibuy[mbsel])" tabindex="0" role="button">
+                            </span>
+                            <span class="tool blackedout" data-tooltip="Plough" id="greg_tool_3">
+                                <span class="tool_price" data-tool-id="3">tool_3</span>
+                                <p class="toolnumber" id="greg_tool_3_number">err</p>
+                                <img src="./assets/tools/tool_3.png" class="toolicon tool_3" onclick="createTool(3,multibuy[mbsel])" tabindex="0" role="button">
+                            </span>
+                            <span class="tool blackedout" data-tooltip="Dual Sickle" id="greg_tool_4">
+                                <span class="tool_price" data-tool-id="4">tool_4</span>
+                                <p class="toolnumber" id="greg_tool_4_number">err</p>
+                                <img src="./assets/tools/tool_4.png" class="toolicon tool_4" onclick="createTool(4,multibuy[mbsel])" tabindex="0" role="button">
+                            </span>
+                            <span class="tool blackedout" data-tooltip="Gilded Hoe" id="greg_tool_5">
+                                <span class="tool_price" data-tool-id="5">tool_5</span>
+                                <p class="toolnumber" id="greg_tool_5_number">err</p>
+                                <img src="./assets/tools/tool_5.png" class="toolicon tool_5" onclick="createTool(5,multibuy[mbsel])" tabindex="0" role="button">
+                            </span>
+
+                            <!-- Progress Bar -->
+                            <div id="Greg_Bar" class="pbar">
+                                <div id="Greg_Progress" class="progress"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Charles Rendering-->
+                    <div class="Charles characterbox box char_locked" id="charles_box">
+                        <div class="char_info" id="charles_info">
+                            <h2>Charles</h2>
+                            <p class="secondary_text">- Scholar -</p>
+                            <hr>
+                            <div id="charles_debug"></div>
+
+                            <button onclick="closeDialog()">Done</button>
+                        </div>
+                        <img src="./assets/icons/palette.svg" alt="Customize" title="Cosmetics" class="button_icon char_mini_button char_custom_button" onclick="cosmeticSwitcher('charles')" tabindex="0" role="button">
+                        <img src="./assets/icons/info.svg" alt="Info" title="Info" class="button_icon char_mini_button char_info_button" onclick="characterInfo('charles')" tabindex="0" role="button">
+
+                        <!-- Top -->
+                        <div class="top flex">
+                            <img
+                                src="./assets/characters/Charles.png"
+                                alt="Charles"
+                                id="charles_avatar"
+                                class="characterimg"
+                                title="Charles"
+                                onclick="characterInfo('charles')">
+                            <div class="characterdesc">
+                                <b id="charles_name" class="character_name">Charles</b>
+                                <div class="flex" style="margin-top: 2px;">
+                                    <button id="charles_prestige_button" onclick="openPrestigeMenu()" style="width: 280px; margin-left: 2px;">
+                                        Prestige info
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bottom -->
+                        <div class="bottom shop_bottom" id="charles_shop">
+                            <!-- Charles' tomes -->
+                            <div class="tooltip_area">
+                                <div
+                                onclick="Charles.improveWorkingConditions.add(multibuy[mbsel])"
+                                id="ImproveWorkingConditions_button"
+                                class="unbold shop_item flex cant_afford"
+                                tabindex="0"
+                                role="button">
+                                    <img src="./assets/items/tome_iwc.png" alt="" class="shop_img tome_iwc">
+                                    <div class="info charles_shop_containter">
+                                        <p>Improve Working Conditions</p>
+                                        <div id="iwc_effect" class="shop_value secondary_text"></div>
+                                        <span id="iwc_count" class="secondary_text">x0</span>
+                                        <span id="ImproveWorkingConditions" class="shop_price">---</span>
+                                    </div>
+                                </div>
+
+                                <div class="shop_tooltip">
+                                    Increases Bill and Belle's output
+                                </div>
+                            </div>
+
+                            <div class="tooltip_area">
+                                <div
+                                onclick="Charles.betterHoes.add(multibuy[mbsel])"
+                                id="BetterHoes_button"
+                                class="unbold shop_item flex cant_afford"
+                                tabindex="0"
+                                role="button">
+                                    <img src="./assets/items/tome_tools.png" alt="" class="shop_img tome_tools">
+                                    <div class="info charles_shop_containter">
+                                        <p>High Quality Tools</p>
+                                        <div id="bh_effect" class="shop_value secondary_text"></div>
+                                        <span id="bh_count" class="secondary_text">x0</span>
+                                        <span id="BetterHoes" class="shop_price">---</span>
+                                    </div>
+                                </div>
+
+                                <div class="shop_tooltip">
+                                    Increases the power of equipped tools
+                                </div>
+                            </div>
+
+                            <div class="tooltip_area">
+                                <div
+                                onclick="Charles.decreaseWages.add(multibuy[mbsel])"
+                                id="DecreaseWages_button"
+                                class="unbold shop_item pointer flex cant_afford"
+                                tabindex="0"
+                                role="button">
+                                    <img src="./assets/items/tome_dww.png" alt="" class="shop_img tome_dww">
+                                    <div class="info charles_shop_containter">
+                                        <p>Decrease Worker Wages</p>
+                                        <div id="dww_effect" class="shop_value secondary_text"></div>
+                                        <span id="dww_count" class="secondary_text">x0</span>
+                                        <span id="DecreaseWages" class="shop_price">---</span>
+                                    </div>
+                                </div>
+                                <div class="shop_tooltip">
+                                    Decreases the rate at which character prices increase
+                                </div>
+                            </div>
+
+                            <!-- Info -->
+                            <p class="secondary_text center" style="padding: 4px; margin-top: 8px;">
+                                Golden $Paw research - Buy tomes
+                            </p>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- Character column 2 -->
+                <!-- #region -->
+                <div class="character_column">
+
+                    <!--Jared Rendering-->
+                    <div class="jared characterbox box char_locked" id="jared_box">
+                        <div class="char_info" id="jared_info">
+                            <h2>Jared</h2>
+                            <p class="secondary_text">- Shopkeep -</p>
+                            <hr>
+                            Sells trinkets that grant special abilities. Trinkets are kept when you prestige.
+                        </div>
+                        <img src="./assets/icons/palette.svg" alt="Customize" title="Cosmetics" class="button_icon char_mini_button char_custom_button" onclick="cosmeticSwitcher('jared')" tabindex="0" role="button">
+                        <img src="./assets/icons/info.svg" alt="Info" title="Info" class="button_icon char_mini_button char_info_button" onclick="characterInfo('jared')" tabindex="0" role="button">
+
+                        <!-- Top -->
+                        <div class="top flex">
+                            <img
+                                src="./assets/characters/Jared.png"
+                                alt="Jared"
+                                id="jared_avatar"
+                                class="characterimg"
+                                title="Jared"
+                                onclick="characterInfo('jared')">
+                            <div class="characterdesc">
+                                <b id="jared_name" class="character_name">Jared</b>
+                                <p class="secondary_text">
+                                    Trinket shop
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Bottom -->
+                        <div class="bottom shop_bottom">
+                            <div id="jared_shop">
+                                <div class="center">
+                                    <img src="./assets/items/trinkets/mouse_2.png" alt="" style="height: 48px; width: 48px;">
+                                    <img src="./assets/items/trinkets/origami.png" alt="" style="height: 48px; width: 48px;">
+                                    <img src="./assets/items/trinkets/credit.png" alt="" style="height: 48px; width: 48px;">
+                                    <br>
+                                    Interested in some high quality merchandise?
+                                    <br>
+                                    <button style="width: 70%; margin-top: 8px;" onclick="hireJared()">Hire <span class="secondary_text">(10m $Paw)</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Carl Rendering-->
+                    <div class="carl characterbox box char_locked" id="carl_box">
+                        <div class="char_info" id="carl_info">
+                            <h2>Carl</h2>
+                            <p class="secondary_text">- Artist -</p>
+                            <hr>
+                            The artist. Ever get tired of farming $Paw? Of course not, but you can still change it up if you so choose.
+                        </div>
+                        <img src="./assets/icons/palette.svg" alt="Customize" title="Cosmetics" class="button_icon char_mini_button char_custom_button" onclick="cosmeticSwitcher('carl')" tabindex="0" role="button">
+                        <img src="./assets/icons/info.svg" alt="Info" title="Info" class="button_icon char_mini_button char_info_button" onclick="characterInfo('carl')" tabindex="0" role="button">
+
+                        <!-- Top -->
+                        <div class="top flex">
+                            <img
+                                src="./assets/characters/Carl.png"
+                                alt="Carl"
+                                id="carl_avatar"
+                                class="characterimg"
+                                title="Carl"
+                                onclick="characterInfo('carl')">
+                            <div class="characterdesc flex">
+                                <div>
+                                    <b id="carl_name" class="character_name">Carl</b>
+                                    <div class="flex" style="margin-top: 2px;">
+                                        <button id="carl_theme_button" class="char_button new_indicator_theme" onclick="themeSwitcher()" style="width: 140px; margin-left: 2px;">
+                                            Themes
+                                        </button>
+                                        <button id="carl_cosmetic_button" class="char_button new_indicator_cosmetic" onclick="cosmeticSwitcher()" style="width: 140px">
+                                            Cosmetics
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- <button id="carl_custom_button" class="half_width" onclick="confetti()">
+                                    Custom
+                                </button> -->
+                            </div>
+                        </div>
+
+                        <!-- Bottom -->
+                        <div class="bottom shop_bottom">
+                            <div id="carl_shop"></div>
+                            <!-- <div class="shop_nav">
+                                <div class="shop_nav_item nav_prev" tabindex="0" role="button" onclick="populateCarl(-1)">⯇</div>
+                                <p class="secondary_text" id="carl_page_indicator">1/4</p>
+                                <div class="shop_nav_item nav_prev" tabindex="0" role="button" onclick="populateCarl(1)">⯈</div>
+                            </div> -->
+                        </div>
+                    </div>
+
+                    <!-- More characters tooltip -->
+                    <br>
+                    <p class="secondary_text center" id="more_chars_tooltip">
+                        Progress through the game to unlock additional characters!
+                    </p>
+
+                   
+        <!-- Game navigation -->
+        <nav id="game_nav" class="flex">
+            <a href="#home">
+                <figure>
+                    <img src="https://i.postimg.cc/2StFqXbJ/home.png" alt="Play" class="invert_alt">
+                    <figcaption>Home</figcaption>
+                </figure>
+            </a>
+            <a href="#characters">
+                <figure>
+                    <img src="https://i.postimg.cc/5tF58q8t/booster.png" alt="Characters" class="invert_alt">
+                    <figcaption>Upgrades</figcaption>
+                </figure>
+            </a>
+            <a href="">
+                <figure>
+                    <img src="https://i.postimg.cc/QtGQm9qJ/wallet.png" alt="Wallet" class="connet-wallet">
+                    <figcaption>Connet</figcaption>
+                </figure>
+            </a>
+        </nav>
+
+        <!-- Tripane -->
+        <div id="settings" class="anchor_offset"></div>
+        <div id="tripane">
+            <div id="tab_bar" class="flex">
+                <button class="activetab tab secondary_text" id="achievements-panel-button" onclick="panelChange(`achievements-panel`)"><img src="./assets/icons/medal.png" alt="" class="button_icon"> Achievements</button><button class="tab secondary_text" id="stats-panel-button" onclick="panelChange(`stats-panel`)"><img src="./assets/icons/info.png" alt="" class="button_icon"> Statistics</button><button class="tab secondary_text" id="settings-panel-button" onclick="panelChange(`settings-panel`)"><img src="./assets/icons/settings.svg" alt="" class="button_icon invert"> Settings</button>
+            </div>
+
+            <!-- Achievements Panel -->
+            <div id="achievements-panel" class="panel remove unremove">
+                <h1>Achievements</h1>
+                
+                <!-- Filter dropdown -->
+                <select name="achievement_filter" id="achievement_filter" class="panel_select">
+                    <option value="all">
+                        All (Default)
+                    </option>
+                    <option value="unlocked">
+                        Unlocked
+                    </option>
+                    <option value="locked">
+                        Locked
+                    </option>
+                    <option value="challenge">
+                        Challenge Achievements
+                    </option>
+                    <option value="secret">
+                        Secret Achievements
+                    </option>
+                </select>
+
+                <!-- <p>Achievements will go here (when they've been implemented)</p><br> -->
+                <p class="secondary_text">
+                    Progress: <span id="achievement_progress">-/- (0%)</span>
+                    <span tabindex="0" class="question_mark" title="Secret (or hidden) achievements are not required to reach 100%" onclick="toast(...toasts.info_achieve_percent)">?</span>
+                </p><br>
+                <label for="compact_achievements">
+                    <input type="checkbox" id="compact_achievements" onclick="setting('compact_achievements')" data-option> Compact mode
+                </label>
+                <label for="achievements_grid">
+                    <input type="checkbox" id="achievements_grid" onclick="setting('achievements_grid')" data-option> Grid view
+                </label><br><br>
+                
+                <div id="achievements_list">
+                    <!-- Old achievement notification -->
+                    <!-- <div class="info-item">
+                        <img src="./assets/puppy Clicker.png" alt="$Paw" class="achievement-img">
+                        <div>
+                        <h1>Achievement earned: Click the $Paw</h1>
+                        <p>Click the $Paw</p>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+
+            <!-- Statistics Panel -->
+            <div id="stats-panel" class="panel remove">
+                <div id="info-inner">
+                    <h1>Statistics</h1>
+                    <i class="secondary_text">View your numbers</i><br/><br/>
+
+                    <!-- Statistics -->
+                    <div id="statistics">
+                        <!-- Prestige -->
+                        <div id="this_prestige_stats" class='remove'>
+                            <h3>This prestige:</h3>
+                            <details class="stat_collapse">
+                                <summary><img src="./assets/stats/puppy.png" alt="" class="stats_icon button_icon"> $Paw earned: <b id="prestige_puppys">---</b></summary>
+                                <p>From clicking: <b id="prestige_puppys_clicked">---</b></p>
+                                <p>From CPS: <b id="prestige_puppys_idled">---</b></p>
+                                <p>From falling $Paw: <b id="prestige_puppys_bonus">---</b></p>
+                            </details>
+                            <p><img src="./assets/stats/pointer.png" alt="" class="stats_icon button_icon"> Total Clicks: <b id="prestige_clicks">---</b></p>
+                            <details class="stat_collapse">
+                                <summary><img src="./assets/tools/tool_0.png" alt="" class="stats_icon button_icon"> Tools crafted: <b id="prestige_hoes_crafted_total">---</b><br/></summary>
+                                <p>Hoe:        <b id="prestige_hoes_crafted_0">---</b></p>
+                                <p>Sturdy Hoe: <b id="prestige_hoes_crafted_1">---</b></p>
+                                <p>Scythe:     <b id="prestige_hoes_crafted_2">---</b></p>
+                                <p>Plough:     <b id="prestige_hoes_crafted_3">---</b></p>
+                                <p>Dual Sickle:<b id="prestige_hoes_crafted_4">---</b></p>
+                                <p>Gilded Hoe: <b id="prestige_hoes_crafted_5">---</b></p>
+                            </details>
+                            <p>Falling $Paw grabbed: <b id="prestige_falling_puppys_grabbed">---</b></p>
+                            <p>Boosts used: <b id="prestige_boosts_used">---</b></p>
+                        </div>
+
+                        <!-- Lifetime -->
+                        <h3>Lifetime:</h3>
+                        <p>Time played: <b id="stat_time_played">---</b></p><br/>
+
+                        <details class="stat_collapse">
+                            <summary><img src="./assets/stats/puppy.png" alt="" class="stats_icon button_icon"> $Paw earned: <b id="lifetime_puppys">---</b></summary>
+                            <p>From clicking: <b id="lifetime_puppys_clicked">---</b></p>
+                            <p>From CPS: <b id="lifetime_puppys_idled">---</b></p>
+                            <p>From falling $Paw: <b id="lifetime_puppys_bonus">---</b></p>
+                        </details>
+                        <p><img src="./assets/stats/pointer.png" alt="" class="stats_icon button_icon"> Total Clicks: <b id="lifetime_clicks">---</b></p>
+                        <details class="stat_collapse">
+                            <summary>Tools crafted: <b id="lifetime_hoes_crafted_total">---</b><br/></summary>
+                            <p>Hoe:        <b id="lifetime_hoes_crafted_0">---</b></p>
+                            <p>Sturdy Hoe: <b id="lifetime_hoes_crafted_1">---</b></p>
+                            <p>Scythe:     <b id="lifetime_hoes_crafted_2">---</b></p>
+                            <p>Plough:     <b id="lifetime_hoes_crafted_3">---</b></p>
+                            <p>Dual Sickle: <b id="lifetime_hoes_crafted_4">---</b></p>
+                            <p>Gilded Hoe:     <b id="lifetime_hoes_crafted_5">---</b></p>
+                        </details>
+                        <p>Falling $Paw grabbed: <b id="lifetime_falling_puppys_grabbed">---</b></p>
+                        <p>Boosts used: <b id="lifetime_boosts_used">---</b></p><br/>
+
+                        <p>Prestiges: <b id="lifetime_prestige">---</b></p>
+                        <p><img src="./assets/stats/golden_puppy.png" alt="" class="stats_icon button_icon"> Golden $Paw earned: <b id="lifetime_golden_puppys">---</b></p>
+                        <p><img src="./assets/stats/golden_puppy_spent.png" alt="" class="stats_icon button_icon"> Golden $Paw spent: <b id="lifetime_golden_puppys_spent">---</b></p>
+                        <p>Coins earned: <b id="lifetime_cash">---</b></p>
+                        <p>Coins spent: <b id="lifetime_cash_spent">---</b></p><br>
+
+                        <p>Clicks per second (Best): <b id="lifetime_clickspeedrecord">---</b></p><br/>
+
+                        <p>Themes: <b id="stat_themes">---</b></p>
+                        <p>Cosmetics: <b id="stat_cosmetics">---</b> <span tabindex="0" class="question_mark" title="This does not include default cosmetics. Secret cosmetics are not required to reach 100%. A more detailed breakdown is in the cosmetics menu." onclick="toast(...toasts.info_cosmetic_percent)">?</span></p> 
+                        <p class="jared_related">Trinkets: <b id="stat_trinkets">---</b></p>
+                        <br/>
+
+                        <p>Achievements: <b id="stat_achievements">---</b></p>
+                    </div>
+                </div> 
+            </div>
+
+            <!-- Settings Panel -->
+            <div id="settings-panel" class="panel remove">
+                <h1>Settings</h1>
+                <p class="secondary_text"><i>Customize Puppy Clicker</i></p><br>
+                <!-- <p class="secondary_text"><i>Optionally opt into or optimize options</i></p><br> -->
+
+                <!-- Developer -->
+                <div id="devp"></div>
+
+                <!-- Options -->
+                <div id="options_container">
+                    <!-- Customization -->
+                    <section>
+                        <h6>Customization</h6>
+                        <label for="theme_button">
+                            <div class="option" id="theme_button" onclick="themeSwitcher()" role="button" tabindex="0">
+                                <img src="./assets/icons/palette.svg" alt="" class="button_icon invert">
+                                Themes
+                                <img src="./assets/icons/right_arrow.svg" alt="" class="button_icon invert ra">
+                            </div>
+                        </label>
+                        <label for="cosmetic_button">
+                            <div class="option cosmetic_related" id="cosmetic_button" onclick="cosmeticSwitcher()" role="button" tabindex="0">
+                                <img src="./assets/icons/padlock.svg" alt="" class="button_icon invert cosmetic_padlock">
+                                <img src="./assets/icons/cosmetic.svg" alt="" class="button_icon invert">
+                                Cosmetics
+                                <img src="./assets/icons/right_arrow.svg" alt="" class="button_icon invert ra">
+                            </div>
+                        </label>
+                        <label for="cosmetic_auto_equip">
+                            <div class="option">
+                                <img src="./assets/icons/cosmetic_gear.png" alt="" class="button_icon invert">
+                                Auto-equip new cosmetics
+                                <input type="checkbox" id="cosmetic_auto_equip" onclick="setting('cosmetic_auto_equip')" data-option>
+                            </div>
+                        </label>
+                        <label for="FunTipPercentage">
+                            <div class="option">
+                                <img src="./assets/blank.png" alt="" class="button_icon invert">
+                                Percentage of fun tips<br/>
+                                <div class="flex">
+                                    <input type="range" min="0" max="100" value="50" class="slider" id="FunTipsSlider" data-option-slider="fun_tip_percentage">
+                                    <input type="number" name="fun_tip_percentage_label" id="FunTipsSliderLabel" class="discreet" min="0" max="100" data-option-slider="fun_tip_percentage">
+                                </div>
+                            </div>
+                        </label>
+                    </section>
+
+                    <!-- Gameplay -->
+                    <section>
+                        <h6>Gameplay</h6>
+                        <label for="edit_keybinds">
+                            <div class="option" id="edit_keybinds" onclick="keybindsMenu()" role="button" tabindex="0">
+                                <img src="./assets/icons/keyboard.svg" alt="" class="button_icon bright_200">
+                                Keybinds
+                                <img src="./assets/icons/right_arrow.svg" alt="" class="button_icon invert ra">
+                            </div>
+                        </label>
+                        <label for="enable_keybinds">
+                            <div class="option">
+                                <img src="./assets/blank.png" alt="" class="button_icon invert">
+                                Enable keybinds
+                                <input type="checkbox" id="enable_keybinds" onclick="setting('enable_keybinds')" data-option checked>
+                            </div>
+                        </label>
+
+                        <label for="tutorial_messages">
+                            <div class="option">
+                                <img src="./assets/icons/info.svg" alt="" class="button_icon invert">
+                                Tutorial messages
+                                <input type="checkbox" id="tutorial_messages" onclick="setting('tutorial_messages')" data-option checked>
+                            </div>
+                        </label>
+                        <label for="carl_shop_toasts">
+                            <div class="option">
+                                <img src="./assets/blank.png" alt="" class="button_icon invert">
+                                Carl shop notifications
+                                <input type="checkbox" id="carl_shop_toasts" checked onclick="setting('carl_shop_toasts')" data-option>
+                            </div>
+                        </label>
+                        <label for="autosave_interval">
+                            <div class="option">
+                                <img src="./assets/icons/floppy.svg" alt="" class="button_icon invert">
+                                Autosave Frequency (seconds)
+                                <p class="secondary_text">Game will also save when closed in supported browsers</p>
+                                <div class="flex">
+                                    <input type="range" id="autosave_interval" min="1" max="60" value="5" class="slider" data-option-slider="autosave_interval">
+                                    <input type="number" id="autosave_interval_label" min="1" max="60" value="5" class="discreet" data-option-slider="autosave_interval"/>
+                                </div>
+                            </div>
+                        </label>
+                    </section>
+
+                    <!-- Interface -->
+                    <section>
+                        <h6>Interface</h6>
+                        <label for="show_nav">
+                            <div class="option">
+                                <img src="./assets/blank.png" alt="" class="button_icon invert">
+                                Mobile nav bar
+                                <input type="checkbox" id="show_nav" onclick="setting('show_nav')" data-option>
+                            </div>
+                        </label>
+                        <label for="full_numbers">
+                            <div class="option">
+                                <img src="./assets/blank.png" alt="" class="button_icon invert">
+                                Full numbers
+                                <input type="checkbox" id="full_numbers" onclick="setting('full_numbers')" data-option>
+                            </div>
+                        </label>
+                        <label for="enableMainProgress">
+                            <div class="option">
+                                <img src="./assets/blank.png" alt="" class="button_icon invert">
+                                Always-on-top progress bar
+                                <input type="checkbox" id="enableMainProgress" onclick="settingMainProgress()" data-option/>
+                            </div>
+                        </label>
+                        <label for="confetti_effects">
+                            <div class="option">
+                                <img src="./assets/blank.png" alt="" class="button_icon invert">
+                                Confetti effects
+                                <input type="checkbox" id="confetti_effects" onclick="setting('confetti_effects')" data-option>
+                            </div>
+                        </label>
+                        <label for="notificationLength">
+                            <div class="option">
+                                <img src="./assets/stats/clock.png" alt="" class="button_icon">
+                                Notification Length
+                                <p class="secondary_text">Time (in seconds) that notifications will stay on your screen</p>
+                                <div class="flex">
+                                    <input type="range" id="notificationLength" min="2" max="15" value="6" class="slider" data-option-slider="notificationLength">
+                                    <input type="number" id="notificationLength_label" min="2" max="15" value="6" class="discreet" data-option-slider="notificationLength"/>
+                                </div>
+                            </div>
+                        </label>
+                    </section>
+
+                    <!-- Sounds options -->
+                    <section>
+                        <h6>Audio</h6>
+                        <label for="enableSounds">
+                            <div class="option">
+                                <img src="./assets/blank.png" alt="" class="button_icon invert">
+                                Sounds
+                                <input type="checkbox" id="enableSounds" onclick="settingSounds()" data-option>
+                            </div>
+                        </label>
+                        <label for="enableMusic">
+                            <div class="option">
+                                <img src="./assets/blank.png" alt="" class="button_icon invert">
+                                Beta music
+                                <input type="checkbox" id="enableMusic" onclick="settingMusic()" data-option>
+                            </div>
+                        </label>
+                        <label for="enablepuppySounds">
+                            <div class="option">
+                                <img src="./assets/blank.png" alt="" class="button_icon invert">
+                                Beta Puppy sounds
+                                <input type="checkbox" id="enablepuppySounds" onclick="settingpuppySounds()" data-option>
+                            </div>
+                        </label>
+                        <label for="volume_master">
+                            <div class="option">
+                                <img src="./assets/icons/volume.svg" alt="" class="button_icon invert" id="volume_master_img">
+                                Volume
+                                <div class="flex">
+                                    <input type="range" min="0" max="100" value="0" class="slider" id="volume_master">
+                                    <input type="number" name="volume_master_percent" id="volume_master_percent" class="discreet" min="0" max="100" value="0">
+                                </div>
+                            </div>
+                        </label>
+                    </section>
+                    
+                    <!-- Danger Zone -->
+                    <section>
+                        <h6>Danger Zone</h6>
+                        <div class="flex">
+                            <!-- Delete save -->
+                            <button class="button_red full_width" onClick="openDialog(...dialog.clearsave)" style="margin-right: 6px;">
+                                Delete Save Data
+                            </button>
+                            <!-- Reset settings -->
+                            <button onClick="openDialog(...dialog.settings_reset)" class="full_width">
+                                Reset Settings
+                            </button>
+                        </div>
+
+                    </section>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer>
+                <hr><br>
+                <!-- Title -->
+                <div>
+                    <img src="./assets/theme/pixel_puppy.png" alt="$Paw Clicker" title="$Paw Clicker" class="footer_puppy" onclick="eggUp()" tabindex="0" role="button">
+                    <h1 style="margin-top: 8px;">Puppy Tap to earn</h1>
+                   
+                </div>
+
+                <!-- Columns -->
+                <div class="footer_bottom">
+                    <!-- Created by -->
+                    <div class="footer_column">
+                        <h3>Join</h3>
+                        <div class="flex" style="align-items: center; justify-content: center;">
+                            <a href="https://t.me/puptopia" class="user_card" target="_blank" rel="noopener noreferrer">
+                                <div class="flex" style="margin-right: 8px;">
+                                    <img src="https://i.postimg.cc/Jhp6WzDp/telegram-5662082-640.png" alt="Avatar">
+                                    <p>Telegram</p>
+                                </div>
+                            </a>
+                            <a href="https://x.com/PuppyTap" class="user_card" target="_blank" rel="noopener noreferrer">
+                                <div class="flex">
+                                    <img src="https://i.postimg.cc/cJLhTG9w/twitter.png" alt="Avatar">
+                                    <p>Twitter</p>
+                                </div>
+                            </a>
+                        </div>
+                        <button onclick="startCredits()" style="width: 100%; max-width: 240px; margin-top: 8px;">View Credits</button><br/>
+                        
+                    </div>
+
+                    <!-- Links -->
+                </div>
+
+            </footer>
+        </div>
+    </main>
+  
+    <!-- Popup menus -->
+    <div id="overlay">
+        <!-- Backdrop -->
+        <div id="backdrop" onclick="closeDialog()"></div>
+
+        <!-- Dialog Box -->
+        <div id="dialog" class="popup_box">
+            <!-- Dialog info -->
+            <h2 id="dialog_title">Dialog Title</h2>
+            <p id="dialog_desc">
+                Dialog description
+            </p>
+            <!-- Dialog Options -->
+            <div id="dialog_buttons">
+                <button onclick="closeDialog()" id="dialog_button_cancel">
+                    Cancel
+                </button>
+                <button onclick="closeDialog(true)" id="dialog_button_accept">
+                    OK
+                </button>
+            </div>
+        </div>
+
+        <!-- Fancy Theme Switcher -->
+        <div id="theme_menu" class="popup_box fancy_switcher">
+            <!-- Tabs -->
+            <div class="switcher_bar flex">
+                <button class="tab activetab">Themes</button>
+                <button class="tab cosmetic_related new_indicator_cosmetic" onclick="cosmeticSwitcher()" id="cosmetic_tab_button">
+                    <img src="./assets/icons/padlock.svg" alt="" class="button_icon invert cosmetic_padlock">
+                    Cosmetics
+                </button>
+                <h2 class="toast_close dialog_close main_bg_color" title="Close" onclick="closeDialog()" role="button" tabindex="0">x</h2>
+            </div>
+
+            <!-- Title -->
+            <div>
+                <h1 class="theme_menu_title">Themes</h1>
+                <p class="theme_menu_title secondary_text">A new coat of paint</p>
+            </div>
+        
+
+            <!-- Theme items -->
+            <div id="themes_list" class="fancy_list">
+                <!-- Javascript will do all the work -->
+                <div class="theme_item theme_selected flex">
+                    <img src="./assets/puppy Clicker.png" alt="" class="theme_preview" onclick="setTheme('theme_dark')" id="theme_dark">
+                    <div>
+                        <h3>Error - if you're seeing this, please let us know.</h3>
+                        <p>You may have to delete your save for themes to work.</p>
+                    </div>
+                    <div class="theme_checkbox">
+                        <img src="./assets/checkmark.svg" alt="Selected" class="theme_checkmark">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Fancy Cosmetic Switcher -->
+        <div id="cosmetic_menu" class="popup_box fancy_switcher">
+            <!-- Tab bar -->
+            <div class="switcher_bar flex">
+                <button class="tab new_indicator_theme" onclick="themeSwitcher()" id="theme_tab_button">Themes</button>
+                <button class="tab activetab">Cosmetics</button>
+                <h2 class="toast_close dialog_close main_bg_color" title="Close" onclick="closeDialog()" role="button" tabindex="0">x</h2>
+            </div>
+
+            <!-- Title -->
+            <div>
+                <h1 class="theme_menu_title">Cosmetics</h1>
+                <p class="theme_menu_title secondary_text">Switch it up</p>
+
+                <!-- Grid/List -->
+                <select name="cosmetics_view" id="cosmetics_view" class="panel_select">
+                    <option value="grid">
+                        Grid
+                    </option>
+                    <option value="list">
+                        List
+                    </option>
+                </select>
+            </div>
+        
+            <!-- Cosmetic items -->
+            <div id="cosmetics_list" class="fancy_list">
+                <!-- Bundle -->
+                <details open class="cosmetic_collapse" id="collapse_bundle">
+                    <summary class="h3">All:</summary>
+                    <div id="bundle_cosmetics" class="cosmetics_mini">
+                        <i class="center color_red">
+                            If you're seeing this something is wrong. Please let us know!
+                        </i>
+                    </div>
+                </details>
+
+                <!-- Farmable -->
+                <details open class="cosmetic_collapse" id="collapse_farmable">
+                    <summary class="h3">Farmable:</summary>
+                    <div id="farmable_cosmetics" class="cosmetics_mini"></div>
+                </details>
+                
+                <!-- Bill -->
+                <details open class="cosmetic_collapse bill_related" id="collapse_bill">
+                    <summary class="h3">Bill:</summary>
+                    <div id="bill_cosmetics" class="cosmetics_mini"></div>
+                </details>
+                
+                <!-- Belle -->
+                <details open class="cosmetic_collapse belle_related" id="collapse_belle">
+                    <summary class="h3">Belle:</summary>
+                    <div id="belle_cosmetics" class="cosmetics_mini"></div>
+                </details>
+                
+                <!-- Greg -->
+                <details open class="cosmetic_collapse greg_related" id="collapse_greg">
+                    <summary class="h3">Greg:</summary>
+                    <div id="greg_cosmetics" class="cosmetics_mini"></div>
+                </details>
+                
+                <!-- Charles -->
+                <details open class="cosmetic_collapse charles_related" id="collapse_charles">
+                    <summary class="h3">Charles:</summary>
+                    <div id="charles_cosmetics" class="cosmetics_mini"></div>
+                </details>
+                
+                <!-- Carl -->
+                <details open class="cosmetic_collapse carl_related" id="collapse_carl">
+                    <summary class="h3">Carl:</summary>
+                    <div id="carl_cosmetics" class="cosmetics_mini"></div>
+                </details>
+
+                <!-- Jared -->
+                <details open class="cosmetic_collapse jared_related" id="collapse_jared">
+                    <summary class="h3">Jared:</summary>
+                    <div id="jared_cosmetics" class="cosmetics_mini"></div>
+                </details>
+
+                <!-- Tools -->
+                <details open class="cosmetic_collapse" id="collapse_tools">
+                    <summary class="h3">Tools:</summary>
+                    <div id="tools_cosmetics" class="cosmetics_mini"></div>
+                </details>
+
+            </div>
+        </div>
+
+        <!-- Keybinds menu -->
+        <div id="keybinds_menu" class="popup_box fancy_switcher">
+            <button onclick="resetKeybinds()" id="key_reset">Reset to defaults</button>
+            <h2 class="toast_close generic_close" title="Close" onclick="closeDialog()" tabindex="0" role="button">x</h2>
+            <h1>Edit Keybinds</h1>
+            <p><i class="secondary_text" id="keybinds_blurb">Keybinds are disabled while this menu is open</i></p><br>
+
+            <!-- Can't change -->
+            <p><b>Basic:</b></p>
+            <p class="secondary_text">Go back/close menu: <b class="white">Escape</b></p>
+            <p class="secondary_text">Dialog accept/select focused: <b class="white">Enter</b></p><br>
+
+            <p><b>Tool keybinds:</b></p>
+            <p class="secondary_text">Hold the <b class="white">Alt</b> + your craft hotkey <b class="white">(4-9 by default)</b> to select a tool to equip.</p>
+            <p class="secondary_text">Press the respective character's upgrade key <b class="white">(1-2 by default)</b> to equip to that character</p>
+            <br/><br/>
+
+            <!-- List Keybinds -->
+            <div id="keybinds_list" class="flex">
+
+                <!-- Gameplay -->
+                <div class="key_column flex_1">
+                    
+                    <h3 class="key_header">General</h3>
+
+                    <!-- Gameplay -->
+                    <div class="keybind_item">
+                        <label for="key_puppy">
+                            <p>Get $Paw:</p>
+                            <button class="edit_keybind" id="key_puppy" onclick="detectKey('key_puppy')">
+                                -
+                            </button>
+                        </label>
+                    </div>
+
+                    <div class="keybind_item">
+                        <label for="key_multibuy">
+                            <p>Rotate Multibuy:</p>
+                            <button class="edit_keybind" id="key_multibuy" onclick="detectKey('key_multibuy')">
+                                -
+                            </button>
+                        </label>
+                    </div>
+
+                    <!-- Upgrades -->
+                    <div class="keybind_item">
+                        <label for="key_bill_lvlup">
+                            <p>Upgrade Booster:</p>
+                            <button class="edit_keybind" id="key_bill_lvlup" onclick="detectKey('key_bill_lvlup')">
+                                -
+                            </button>
+                        </label>
+                    </div>
+                    <div class="keybind_item">
+                        <label for="key_belle_lvlup">
+                            <p>Upgrade Belle:</p>
+                            <button class="edit_keybind" id="key_belle_lvlup" onclick="detectKey('key_belle_lvlup')">
+                                -
+                            </button>
+                        </label>
+                    </div>
+                    <div class="keybind_item">
+                        <label for="key_greg_lvlup">
+                            <p>Upgrade Greg:</p>
+                            <button class="edit_keybind" id="key_greg_lvlup" onclick="detectKey('key_greg_lvlup')">
+                                -
+                            </button>
+                        </label>
+                    </div><br/>
+
+                    <h3 class="key_header">Settings</h3>
+                    <div class="keybind_item">
+                        <label for="key_full_numbers">
+                            <p>Toggle full numbers:</p>
+                            <button class="edit_keybind" id="key_full_numbers" onclick="detectKey('key_full_numbers')">
+                                -
+                            </button>
+                        </label>
+                    </div>
+
+                </div>
+
+                <!-- Tools -->
+                <div class="key_column flex_1">
+                    
+                    <h3 class="key_header">Tools</h3>
+
+                    <div class="keybind_item">
+                        <label for="key_craft_0">
+                            <p>Craft Hoe:</p>
+                            <button class="edit_keybind" id="key_craft_0" onclick="detectKey('key_craft_0')">
+                                -
+                            </button>
+                        </label>
+                    </div>
+                    <div class="keybind_item">
+                        <label for="key_craft_1">
+                            <p>Craft Sturdy Hoe:</p>
+                            <button class="edit_keybind" id="key_craft_1" onclick="detectKey('key_craft_1')">
+                                -
+                            </button>
+                        </label>
+                    </div>
+                    <div class="keybind_item">
+                        <label for="key_craft_2">
+                            <p>Craft Scythe:</p>
+                            <button class="edit_keybind" id="key_craft_2" onclick="detectKey('key_craft_2')">
+                                -
+                            </button>
+                        </label>
+                    </div>
+                    <div class="keybind_item">
+                        <label for="key_craft_3">
+                            <p>Craft Plough:</p>
+                            <button class="edit_keybind" id="key_craft_3" onclick="detectKey('key_craft_3')">
+                                -
+                            </button>
+                        </label>
+                    </div>
+                    <div class="keybind_item">
+                        <label for="key_craft_4">
+                            <p>Craft Dual Sickle:</p>
+                            <button class="edit_keybind" id="key_craft_4" onclick="detectKey('key_craft_4')">
+                                -
+                            </button>
+                        </label>
+                    </div>
+                    <div class="keybind_item">
+                        <label for="key_craft_5">
+                            <p>Craft Gilded Hoe:</p>
+                            <button class="edit_keybind" id="key_craft_5" onclick="detectKey('key_craft_5')">
+                                -
+                            </button>
+                        </label>
+                    </div>
+
+                </div>
+
+                <!-- Interface -->
+                <div class="key_column flex_1">
+                    <h3 class="key_header">Interface</h3>
+
+                    <div class="keybind_item">
+                        <label for="key_cleartoasts">
+                            <p>Clear notifications:</p>
+                            <button class="edit_keybind" id="key_cleartoasts" onclick="detectKey('key_cleartoasts')">
+                                -
+                            </button>
+                        </label>
+                    </div>
+                    <div class="keybind_item">
+                        <label for="key_prestige">
+                            <p>Prestige menu:</p>
+                            <button class="edit_keybind" id="key_prestige" onclick="detectKey('key_prestige')">
+                                -
+                            </button>
+                        </label>
+                    </div>
+                    <!-- <div class="keybind_item">
+                        <label for="key_inventory">
+                            <p>Inventory:</p>
+                            <button class="edit_keybind" id="key_inventory" onclick="detectKey('key_inventory')">
+                                -
+                            </button>
+                        </label>
+                    </div> -->
+                    <div class="keybind_item">
+                        <label for="key_tips_menu">
+                            <p>Tips menu:</p>
+                            <button class="edit_keybind" id="key_tips_menu" onclick="detectKey('key_tips_menu')">
+                                -
+                            </button>
+                        </label>
+                    </div>
+                    <div class="keybind_item">
+                        <label for="key_themes">
+                            <p>Themes menu:</p>
+                            <button class="edit_keybind" id="key_themes" onclick="detectKey('key_themes')">
+                                -
+                            </button>
+                        </label>
+                    </div>
+                    <div class="keybind_item">
+                        <label for="key_cosmetics">
+                            <p>Cosmetics menu:</p>
+                            <button class="edit_keybind" id="key_cosmetics" onclick="detectKey('key_cosmetics')">
+                                -
+                            </button>
+                        </label>
+                    </div>
+
+                    <div class="keybind_item">
+                        <label for="key_pane_achievements">
+                            <p>Achievements panel:</p>
+                            <button class="edit_keybind" id="key_pane_achievements" onclick="detectKey('key_pane_achievements')">
+                                -
+                            </button>
+                        </label>
+                    </div>
+                    <div class="keybind_item">
+                        <label for="key_pane_statistics">
+                            <p>Statistics panel:</p>
+                            <button class="edit_keybind" id="key_pane_statistics" onclick="detectKey('key_pane_statistics')">
+                                -
+                            </button>
+                        </label>
+                    </div>
+                    <div class="keybind_item">
+                        <label for="key_pane_settings">
+                            <p>Settings panel:</p>
+                            <button class="edit_keybind" id="key_pane_settings" onclick="detectKey('key_pane_settings')">
+                                -
+                            </button>
+                        </label>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <!-- Fancy Prestige menu -->
+        <div id="prestige_menu" class="popup_box fancy_switcher">
+            <h2 class="toast_close generic_close" title="Close" onclick="closeDialog()" tabindex="0" role="button">x</h2>
+            <h1>Prestige</h1>
+
+            <!-- Current -->
+            <!-- Golden $Paw count -->
+            <div class="flex prestige_item main_bg_color">
+                <img src="./assets/theme/pixel_golden_puppy.png" alt="Golden $Paw">
+                <div>
+                    <span class="prestige_number" id="prestige_menu_gc_count">Loading...</span> Golden $Paw
+                    <span tabindex="0" class="question_mark" title="Golden $Paw are created when you prestige. Use them to buy tomes to give your farmers permanent buffs. Be sure to spend all of your golden $Paw before you start farming!" onclick="toast(...toasts.info_golden_$Paw)">?</span><br/>
+                    Prestige to earn more!
+                </div>
+            </div>
+
+            <!-- Tome page count -->
+            <div class="flex prestige_item main_bg_color">
+                <img src="./assets/items/tome_page.png" alt="Golden $Paw">
+                <div>
+                    <span class="prestige_number" id="prestige_menu_tp_count">Loading...</span> Tome Pages
+                    <span tabindex="0" class="question_mark" title="For every tome page you have you will recieve a +1% golden $Paw bonus when prestiging. Earn additional tome pages by completing achievements!" onclick="toast(...toasts.info_pages)">?</span><br/>
+                    <b id="menu_tome_bonus">+...%</b> golden $Paw bonus when prestiging
+                </div>
+            </div>
+
+            <!-- Next prestige -->
+            <p class="prestigetooltip center" style="padding-top: 6px;">
+                <!-- Charles button -->
+                <button onClick="characterInfo('charles')" class="full_width">
+                    Buy tomes
+                </button><br/>
+                <!-- Prestige button -->
+                <button onClick="openDialog(...dialog.prestige_confirm)" class="button_gold full_width" style="height: 40px;">
+                    Prestige
+                </button><br/>
+                Prestiging now will result in:<br/>
+                <span id="prestige_potential">0</span> Golden $Paw
+            </p>
+        </div>
+
+        <!-- Inventory -->
+        <!-- <div id="inventory_menu" class="popup_box fancy_switcher">
+            <h2 class="toast_close generic_close" title="Close" onclick="closeDialog()" tabindex="0" role="button">x</h2>
+            <h1>Inventory</h1>
+            <p><i class="secondary_text">Secondary text</i></p><br>
+
+            <nav class="inventory_filter">
+                <img src="./assets/icons/star.png" alt="Special">
+            </nav>
+
+            <div class="flex">
+                Inventory slots
+                <div id="inventory">
+                    <div class="inventory_slot main_bg_color">
+                        <img src="./assets/puppy Clicker.png" alt="$Paw">
+                        <p class="inventory_number secondary_text">x1200</p>
+                    </div>
+                    <div class="inventory_slot main_bg_color">
+                        <img src="" alt="Tome1">
+                        <p class="inventory_number secondary_text">x2</p>
+                    </div>
+                    <div class="inventory_slot main_bg_color"></div>
+                    <div class="inventory_slot main_bg_color"></div>
+                </div>
+    
+                Preview pane
+                <div id="inventory_preview">
+                    <div class="inventory_slot main_bg_color item_preview">
+                        <img src="./assets/puppy Clicker.png" alt="$Paw">
+                    </div>
+                    <h2 style="margin-bottom: 6px;">$Paw</h2>
+                    <p class="secondary_text">
+                        Good old $Paw
+                    </p>
+                </div>
+            </div>
+
+        </div> -->
+
+        <!-- Tips menu -->
+        <div id="tips_menu" class="popup_box fancy_switcher">
+            <h2 class="toast_close generic_close" title="Close" onclick="closeDialog()" tabindex="0" role="button">x</h2>
+            <h1>Tips</h1>
+            <p class="secondary_text">Game knowledge</p>
+
+            <!-- List -->
+            <div id="tips_list">
+                <p class="tip_item"><span class="tip_number">0</span>Error: unable to load tips</p>
+            </div>
+        </div>
+
+
+        <!-- Credits scroll -->
+        <div id="credits" class="center">
+            <h1 class="credits_underline">Credits</h1>
+
+            <span class="secondary_text">Gameplay</span>
+            <b>Alameen</b>
+            <b>fadarnaura</b>
+
+            <span class="secondary_text">Pixel Art</span>
+            <b>masani</b>
+
+            <span class="secondary_text">Character Designs & Worldbuilding</span>
+            <b>masani</b>
+
+            <span class="secondary_text">Sound Effects & Music</span>
+            <b>masani</b>
+
+
+
+
+            <h3 class="credits_underline">Special Thanks</h3>
+            <span class="secondary_text">Additional Cosmetics & Ideas</span>
+            <b>Universal kano nigeria</b>
+
+
+            <span class="secondary_text">Image Attribution:</span>
+        
+
+            <span class="secondary_text">And thanks to:</span>
+            W3Schools, Stack Overflow, and fadarnaura
+            For being reliable sources of information
+            
+
+
+
+            <div>
+                <h1>Puppy Tap Game Clicker</h1>
+                <p class="secondary_text">
+                                        © All rights reserved 2024
+                </p>
+                <button onclick="closeDialog()" style="width: 180px; margin-top: 24px;">Done</button>
+                <!-- <img src="./assets/theme/pixel_puppy.png" alt="Puppy tap Game" class="footer_puppy"> -->
+            </div>
+        </div>
+
+        
+    </div>
+
+    <!-- Visual effects -->
+    <div id="bonusVisualArea"></div>
+    <div id="mouse_confetti"></div>
+    <script src="https://unpkg.com/@tonconnect/sdk@1.0.0/dist/tonconnect.min.js"></script>
+    <script>wallet.js</script>
+
+</body>
+</html>

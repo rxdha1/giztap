@@ -1,0 +1,53 @@
+body {
+  background-color: #121212;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+.wallet-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.wallet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-dot.red {
+  background-color: red;
+}
+
+.status-dot.green {
+  background-color: green;
+}
+
+.wallet-info h3 {
+  margin: 10px 0;
+}
+
+.wallet-actions input,
+.wallet-actions button {
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+}
+
+.wallet-actions button {
+  background-color: #444;
+  color: #fff;
+}
